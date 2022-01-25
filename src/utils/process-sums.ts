@@ -101,10 +101,10 @@ const onMemoryOverflow = (data: ISum[]) => {
 
 const getMemoryUsage = () => {
   //@ts-ignore
-  const total = performance.memory.totalJsHeapSize / 1024 / 1024;
+  const limit = performance.memory.jsHeapSizeLimit / 1024 / 1024;
   //@ts-ignore
-  const used = performance.memory.usedJsHeapSize / 1024 / 1024;
+  const used = performance.memory.usedJSHeapSize / 1024 / 1024;
 
-  return parseInt(((used / total) * 100).toFixed(2));
+  return parseInt(((used / limit) * 100).toFixed(2));
 };
 */
