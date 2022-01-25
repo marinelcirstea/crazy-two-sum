@@ -49,9 +49,9 @@ function App() {
       {processing ? <div>Processing...</div> : <div>Write something</div>}
 
       {/* If the total is bigger than what we set in context, show this */}
-      {total !== null && total > result.length && (
+      {total && total > result.length && (
         <p>
-          Only {result.length} items are shown. Total number of items: {total}
+          {result.length} items are shown. Total number of items: {total}
         </p>
       )}
 
@@ -62,11 +62,11 @@ function App() {
           placeholder="[ 0, 1, 2, 3, 4, 5 ]"
           onChange={handleChange}
         />
-        <br />
-        <br />
-        {result[0] && <SumsTable sums={[...result]} />}
-        <br />
       </form>
+      <br />
+      <br />
+      {result[0] && <SumsTable sums={result} />}
+      <br />
 
       {/* Options for our processor. Currently only 1 */}
       <div className="options">

@@ -26,7 +26,7 @@ export const initialState: State = {
   options: {
     disableFailsafe: false,
   },
-  total: null,
+  total: 0,
 };
 
 export function sumsReducer(state: State = initialState, action: Action) {
@@ -95,7 +95,7 @@ function useSums() {
     dispatch({ type: "SET_OPTIONS", payload: options });
   };
 
-  const setSums = (sums: ISum[]) => {
+  const setResult = (sums: ISum[]) => {
     dispatch({ type: "SET_RESULT", payload: sums });
   };
 
@@ -103,28 +103,26 @@ function useSums() {
     dispatch({ type: "SET_ERROR", payload: message });
   };
 
-  const setTotal = (num: number | null) => {
+  const setTotal = (num: number) => {
     dispatch({ type: "SET_TOTAL", payload: num });
   };
 
   const process = (str: string, options: IProcessorOptions = state.options) => {
     (async () => {
       try {
-        setSums([]);
-        setTotal(null);
+        setResult([]);
+        setTotal(0);
         setError(null);
         setProcessing(true);
 
         let sums = await detectSums(str, options);
-        let sliced: ISum[] = [];
-        if (sums.length > 20) {
-          sliced = sums.slice(0, 30);
-        }
         setTotal(sums.length);
 
-        sums = []; // get rid of the initial array
+        if (sums.length > 30) {
+          sums = sums.slice(0, 30);
+        }
 
-        setSums(sliced);
+        setResult(sums);
       } catch (error: any) {
         setError(error?.message);
       } finally {
