@@ -1,14 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { SumsProvider } from "./contexts/sums-context";
+import { ToastProvider } from "./contexts/toast-context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SumsProvider>
+      <ToastProvider autoExpireIn={5000}>
+        <App />
+      </ToastProvider>
+    </SumsProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

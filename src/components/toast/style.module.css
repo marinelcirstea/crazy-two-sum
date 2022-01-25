@@ -1,0 +1,81 @@
+.toasts {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 0.75rem;
+  margin-top: 0.75rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.toastIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.toastIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.messageContainer {
+  margin-left: 0.75rem;
+  flex: 1;
+}
+
+.messageContainer p {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.closeButton {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.closeButton button {
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #0009;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.closeButton button svg {
+  width: 24px;
+  height: 24px;
+}
+.closeButton button:hover {
+  color: #000;
+}
+.closeButton button:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .toasts {
+    width: 100%;
+    max-width: 360px;
+  }
+}
